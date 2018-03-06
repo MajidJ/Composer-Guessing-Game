@@ -8,6 +8,8 @@ let underScores = [];
 let lettersGuessed = [];
 let targetPerson;
 let targetName;
+let generatedNum;
+// let perviousRandomNum = [];
 const wordBank = [
     {name: "Mozart",
     img:"assets/images/mozart.jpg",
@@ -36,23 +38,29 @@ const resetDOM = function() {
     $(".guesses-left").append(guessesLeft);
     // Reset/clear letters guessed
     $(".letters-guessed").empty();
-    // let lettersGuessed = [];
     lettersGuessed.length = 0
     underScores.length = 0;
-    // pickRandomWord();
     
 };
 
 // Generate random number expression
 let randomNum = function() {
-    let num = Math.random();
+    let num = Math.floor(Math.random() * wordBank.length);
     return num;
+    // if (perviousRandomNum.includes(num) === true) {
+    //     console.log(num);
+    //     randomNum();
+    // } else {
+    //     perviousRandomNum.push(num);
+    //     console.log(num);
+    //     return num;
+    // }
 }
 
 // Start new word expression
-const newWord = function(randomNum) {  
+const newWord = function(randomNumParam) {  
     // let targetPerson = pickRandomWord();    
-    targetPerson = wordBank[Math.floor(randomNum * wordBank.length)];
+    targetPerson = wordBank[randomNumParam];
     // Convert target word to array of letters
     // Create word-in-progress word array with same length as target word array that contains “_”
     // Display word-in-progress word array to DOM
@@ -66,9 +74,6 @@ const newWord = function(randomNum) {
 
 const gameLevel = function(targetPerson) {
 // execute new word expression
-    // let targetPerson;
-    // targetPerson.length = 0;
-    // let targetPerson = newWord(randomNum);
     targetName = targetPerson.name.toUpperCase().split("");
     // Listen for keystroke
     $(document).keyup(function(event) {
@@ -97,7 +102,7 @@ const gameLevel = function(targetPerson) {
                     }
                     // Check if the word is complete
                     if (underScores.join("") === targetName.join("")) {                        
-                        if (wins === 5) {
+                        if (wins === 2) {
                             finalWin();
                             return;
                         } else {

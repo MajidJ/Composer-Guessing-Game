@@ -9,7 +9,7 @@ let lettersGuessed = [];
 let targetPerson;
 let targetName;
 let generatedNum;
-// let perviousRandomNum = [];
+let perviousRandomNum = [];
 const wordBank = [
     {name: "Mozart",
     img:"assets/images/mozart.jpg",
@@ -19,7 +19,16 @@ const wordBank = [
     song:"assets/songs/beethoven.mp3"}, 
     {name: "Bach",
     img:"assets/images/bach.jpg",
-    song:"assets/songs/bach.mp3"}, 
+    song:"assets/songs/bach.mp3"},
+    {name: "Brahms",
+    img:"assets/images/brahms.jpg",
+    song:"assets/songs/brahms.mp3"},
+    {name: "Chopin",
+    img:"assets/images/chopin.jpg",
+    song:"assets/songs/chopin.mp3"},
+    {name: "Tchaikovsky",
+    img:"assets/images/tchaikovsky.jpg",
+    song:"assets/songs/tchaikovsky.mp3"},
 ];
 
 // At load of page
@@ -46,15 +55,16 @@ const resetDOM = function() {
 // Generate random number expression
 let randomNum = function() {
     let num = Math.floor(Math.random() * wordBank.length);
-    return num;
-    // if (perviousRandomNum.includes(num) === true) {
-    //     console.log(num);
-    //     randomNum();
-    // } else {
-    //     perviousRandomNum.push(num);
-    //     console.log(num);
-    //     return num;
-    // }
+    // return num;
+    if (perviousRandomNum.includes(num) === true) {
+        // console.log(num);
+        let num = Math.floor(Math.random() * wordBank.length);
+        return num;
+    } else {
+        perviousRandomNum.push(num);
+        // console.log(num);
+        return num;
+    }
 }
 
 // Start new word expression
@@ -102,7 +112,7 @@ const gameLevel = function(targetPerson) {
                     }
                     // Check if the word is complete
                     if (underScores.join("") === targetName.join("")) {                        
-                        if (wins === 2) {
+                        if (wins === 5) {
                             finalWin();
                             return;
                         } else {

@@ -9,5 +9,5 @@ Game is launched immediately from index.html. Use alphabet letters on the keyboa
 ## Authors
 
 Majid Jamaleldine [https://github.com/Taxlife/Hangman-Game]
-
+Working Game: [https://taxlife.github.io/Hangman-Game/]
 

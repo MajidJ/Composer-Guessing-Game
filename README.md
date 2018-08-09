@@ -8,6 +8,6 @@ Game is launched immediately from index.html. Use alphabet letters on the keyboa
 
 ## Authors
 
-Majid Jamaleldine [https://github.com/MajidJ/Hangman-Game]
-Working Game: [https://MajidJ.github.io/Hangman-Game/]
+Majid Jamaleldine [https://github.com/MajidJ/Composer-Guessing-Game]
+Working Game: [https://MajidJ.github.io/Composer-Guessing-Game/]
 
